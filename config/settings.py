@@ -53,6 +53,3 @@ keep_screen_awake = True           # True or False (Note: Will temporarily deact
 
 # Run in undetected mode to bypass anti-bot protections (Preview Feature, UNSTABLE. Recommended to leave it as False)
 stealth_mode = False             # True or False
-
-# Use ChatGPT for resume building (Experimental Feature can break the application. Recommended to leave it as False) 
-# use_resume_generator = False       # True or False ,   This feature may only work with 'stealth_mode = True'. As ChatGPT website is hosted by CloudFlare which is protected by Anti-bot protections!

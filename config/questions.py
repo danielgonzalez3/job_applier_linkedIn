@@ -1,4 +1,4 @@
-default_resume_path = "./resume.pdf"      # (In Development)
+default_resume_path = "./resume.pdf"
 years_of_experience = "5"
 require_visa = "No"
 website = "https://github.com/danielgonzalez3"
@@ -10,8 +10,8 @@ notice_period = 30
 headline = "Experienced Software Engineer with Expertise in GitOps, Cloud Solutions, and Full-Stack Development"
 summary = "I'm a software engineer with a Master’s in Computer Science and experience in GitOps, cloud infrastructure, and automation. I’ve built scalable solutions at Cisco, Intel, and Lockheed Martin, using tools like Kubernetes, Docker, and AWS. Recently, I led projects in urban forestry data and team mentorship. I'm looking to bring my skills in automation and system architecture to new, impactful challenges."
 cover_letter = "Cover Letter"
-recent_employer = "Cisco"
+recent_employer = "American Express"
 confidence_level = "8"
-pause_before_submit = True
+pause_before_submit = False
 pause_at_failed_question = True
 overwrite_previous_answers = False
