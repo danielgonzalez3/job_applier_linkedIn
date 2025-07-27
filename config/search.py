@@ -1,12 +1,11 @@
 search_terms = ["Software Engineer", "Software Developer", "Python Developer", "Java Developer", "Full Stack Developer", "Web Developer", "Nodejs Developer"]
-search_location = "San Diego"
+search_location = "California"
 
 # After how many number of applications in current search should the bot switch to next search? 
 switch_number = 100                 # Only numbers greater than 0... Don't put in quotes
 
 # Do you want to randomize the search order for search_terms?
 randomize_search_order = False     # True of False
-
 
 # >>>>>>>>>>> Job Search Filters <<<<<<<<<<<
 ''' 
@@ -62,7 +61,7 @@ about_company_bad_words = ["Crossover", "Staffing", "Recruiting"]       # (dynam
 about_company_good_words = []      # (dynamic multiple search) or leave empty as []. Ex: ["Robert Half", "Dice"]
 
 # Avoid applying to these companies if they have these bad words in their 'Job Description' section...  (In development)
-bad_words = [".NET", "Embedded Programming", "PHP", "Ruby", "CNC"]                     # (dynamic multiple search) or leave empty as []. Case Insensitive. Ex: ["word_1", "phrase 1", "word word", "polygraph", "US Citizenship", "Security Clearance"]
+bad_words = [".NET", "PHP", "Ruby", "CNC"]                     # (dynamic multiple search) or leave empty as []. Case Insensitive. Ex: ["word_1", "phrase 1", "word word", "polygraph", "US Citizenship", "Security Clearance"]
 
 # Do you have an active Security Clearance? (True for Yes and False for No)
 security_clearance = False         # True or False
