@@ -213,7 +213,7 @@ def get_page_info() -> tuple[WebElement | None, int | None]:
     Function to get pagination element and current page number
     '''
     try:
-        pagination_element = try_find_by_classes(driver, ["artdeco-pagination", "artdeco-pagination__pages"])
+        pagination_element = try_find_by_classes(driver, ["jobs-search-pagination__pages"])
         scroll_to_view(driver, pagination_element)
         current_page = int(pagination_element.find_element(By.XPATH, "//li[contains(@class, 'active')]").text)
     except Exception as e:
@@ -630,11 +630,6 @@ def discard_job() -> None:
     actions.send_keys(Keys.ESCAPE).perform()
     wait_span_click(driver, 'Discard', 2)
 
-
-
-
-
-
 # Function to apply to jobs
 def apply_to_jobs(search_terms: list[str]) -> None:
     applied_jobs = get_applied_job_ids()
@@ -703,34 +698,7 @@ def apply_to_jobs(search_terms: list[str]) -> None:
                         continue
                     except Exception as e:
                         print_lg("Failed to scroll to About Company!")
-                        # print_lg(e)
 
-
-
-                    # Hiring Manager info
-                    try:
-                        hr_info_card = WebDriverWait(driver,2).until(EC.presence_of_element_located((By.CLASS_NAME, "hirer-card__hirer-information")))
-                        hr_link = hr_info_card.find_element(By.TAG_NAME, "a").get_attribute("href")
-                        hr_name = hr_info_card.find_element(By.TAG_NAME, "span").text
-                        # if connect_hr:
-                        #     driver.switch_to.new_window('tab')
-                        #     driver.get(hr_link)
-                        #     wait_span_click("More")
-                        #     wait_span_click("Connect")
-                        #     wait_span_click("Add a note")
-                        #     message_box = driver.find_element(By.XPATH, "//textarea")
-                        #     message_box.send_keys(connect_request_message)
-                        #     if close_tabs: driver.close()
-                        #     driver.switch_to.window(linkedIn_tab) 
-                        # def message_hr(hr_info_card):
-                        #     if not hr_info_card: return False
-                        #     hr_info_card.find_element(By.XPATH, ".//span[normalize-space()='Message']").click()
-                        #     message_box = driver.find_element(By.XPATH, "//div[@aria-label='Write a message…']")
-                        #     message_box.send_keys()
-                        #     try_xp(driver, "//button[normalize-space()='Send']")        
-                    except Exception as e:
-                        print_lg(f'HR info was not given for "{title}" with Job ID: {job_id}!')
-                        # print_lg(e)
 
 
                     # Calculation of date posted
@@ -875,7 +843,8 @@ def apply_to_jobs(search_terms: list[str]) -> None:
                     print_lg("Couldn't find pagination element, probably at the end page of results!")
                     break
                 try:
-                    pagination_element.find_element(By.XPATH, f"//button[@aria-label='Page {current_page+1}']").click()
+                    next_btn = pagination_element.find_element(By.XPATH, f".//button[@aria-label='Page{current_page+1}']")
+                    next_btn.click()
                     print_lg(f"\n>-> Now on Page {current_page+1} \n")
                 except NoSuchElementException:
                     print_lg(f"\n>-> Didn't find Page {current_page+1}. Probably at the end page of results!\n")
@@ -884,7 +853,6 @@ def apply_to_jobs(search_terms: list[str]) -> None:
         except Exception as e:
             print_lg("Failed to find Job listings!")
             critical_error_log("In Applier", e)
-            # print_lg(e)
 
         
 def run(total_runs: int) -> int:
@@ -906,7 +874,6 @@ def run(total_runs: int) -> int:
 
 
 
-chatGPT_tab = False
 linkedIn_tab = False
 
 def main() -> None:
