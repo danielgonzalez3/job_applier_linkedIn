@@ -215,7 +215,10 @@ def get_page_info() -> tuple[WebElement | None, int | None]:
     try:
         pagination_element = try_find_by_classes(driver, ["jobs-search-pagination__pages"])
         scroll_to_view(driver, pagination_element)
-        current_page = int(pagination_element.find_element(By.XPATH, "//li[contains(@class, 'active')]").text)
+        current_page = int(pagination_element.find_element(
+            By.XPATH,
+            "//button[contains(@class, 'jobs-search-pagination__indicator-button--active')]"
+        ).text)
     except Exception as e:
         print_lg("Failed to find Pagination element, hence couldn't scroll till end!")
         pagination_element = None
@@ -651,7 +654,6 @@ def apply_to_jobs(search_terms: list[str]) -> None:
             while current_count < switch_number:
                 # Wait until job listings are loaded
                 wait.until(EC.presence_of_all_elements_located((By.XPATH, "//li[@data-occludable-job-id]")))
-
                 pagination_element, current_page = get_page_info()
 
                 # Find all job listings in current page
@@ -843,7 +845,7 @@ def apply_to_jobs(search_terms: list[str]) -> None:
                     print_lg("Couldn't find pagination element, probably at the end page of results!")
                     break
                 try:
-                    next_btn = pagination_element.find_element(By.XPATH, f".//button[@aria-label='Page{current_page+1}']")
+                    next_btn = pagination_element.find_element(By.XPATH, f".//button[@aria-label='Page {current_page+1}']")
                     next_btn.click()
                     print_lg(f"\n>-> Now on Page {current_page+1} \n")
                 except NoSuchElementException:
