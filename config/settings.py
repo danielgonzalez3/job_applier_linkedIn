@@ -34,7 +34,10 @@ failed_file_name = "all excels/all_failed_applications_history.csv"
 logs_folder_path = "logs/"
 
 # Set the maximum amount of time allowed to wait between each click in secs
-click_gap = 0                      # Enter max allowed secs to wait approximately. (Only Non Negative Integers Eg: 0,1,2,3,....)
+click_gap = 2                      # Enter max allowed secs to wait approximately. (Only Non Negative Integers Eg: 0,1,2,3,....)
+
+# Set the approximate delay between each successful application in secs
+apply_gap = 2                      # Enter max secs to wait between applications. 0 disables the delay
 
 # If you want to see Chrome running then set run_in_background as False (May reduce performance). 
 run_in_background = False          # True or False ,   If True, this will make pause_at_failed_question, pause_before_submit and run_in_background as False

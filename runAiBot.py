@@ -837,6 +837,7 @@ def apply_to_jobs(search_terms: list[str]) -> None:
                     if application_link == "Easy Applied": easy_applied_count += 1
                     else:   external_jobs_count += 1
                     applied_jobs.add(job_id)
+                    buffer(apply_gap)
 
 
 
